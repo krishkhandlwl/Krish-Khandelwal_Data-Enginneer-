@@ -4,19 +4,16 @@ import xml.etree.ElementTree as ET
 
 
 # Parsing
-tree = ET.parse('C:/Users/Dell/Desktop/codeDOC/pythoncodes/DLTINS_20210117_01of01.xml')
+tree = ET.parse('C:/Users/Krish/python/pythoncodes/DLTINS_20210117_01of01.xml')
 root = tree.getroot()
 
-# Open the CSV file for writing
-with open('C:/Users/Dell/Desktop/codeDOC/pythoncodes/filenewone.csv', 'w', newline='') as csvfile:
+with open('C:/Users/Krish/python/pythoncodes/NewData.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
 
-    # Write the header row
+    
     writer.writerow(['FinInstrmGnlAttrbts.Id', 'FinInstrmGnlAttrbts.FullNm', 'FinInstrmGnlAttrbts.ClssfctnTp', 'FinInstrmGnlAttrbts.CmmdtyDerivInd', 'FinInstrmGnlAttrbts.NtnlCcy', 'Issr'])
     
      
-
-   # Loop through the FinancialInstrument elements and write the data rows
     for fin_instrm in root.findall('FinInstrm'):
         fin_instrm_attr = fin_instrm.findall('FinInstrmGnlAttrbts')
         id = fin_instrm_attr.findall('Id').text
